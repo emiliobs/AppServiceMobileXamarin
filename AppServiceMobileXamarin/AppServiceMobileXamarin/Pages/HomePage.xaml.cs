@@ -15,6 +15,12 @@ namespace AppServiceMobileXamarin.Pages
             InitializeComponent();
 
             productsButton.Clicked += ProductsButton_Clicked;
+            serviciesButton.Clicked += ServiciesButton_Clicked;
+        }
+
+        private async void ServiciesButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ServicesPage());
         }
 
         private async void ProductsButton_Clicked(object sender, EventArgs e)
