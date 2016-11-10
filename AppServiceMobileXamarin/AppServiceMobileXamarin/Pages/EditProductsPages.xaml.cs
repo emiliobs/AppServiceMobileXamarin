@@ -53,7 +53,37 @@ namespace AppServiceMobileXamarin.Pages
 
         private async void UpdateButton_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(descritionEntry.Text))
+            {
+                await DisplayAlert("Error", "You must enter a description", "Acept");
+                descritionEntry.Focus();
+                return;
+            }
 
+            if (string.IsNullOrEmpty(priceEntry.Text))
+            {
+                await DisplayAlert("Error", "You must enter a description", "Acept");
+                priceEntry.Focus();
+                return;
+            }
+
+            var price = decimal.Parse(priceEntry.Text);
+            if (price < 0)
+            {
+                await DisplayAlert("Error", "The price must be a value greather or equals to zero.", "Acept");
+                return;
+            }
+
+            product.Description = descritionEntry.Text;
+            product.Price = price;
+
+            using (var da = new DataAccess())
+            {
+                da.Update(product);
+            }
+
+            await DisplayAlert("Message", "The record was updated.", "Acept");
+            await Navigation.PopAsync();
         }
     }
 }
