@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AppServiceMobileXamarin.Cells;
 using AppServiceMobileXamarin.Classes;
 using AppServiceMobileXamarin.Data;
 using Xamarin.Forms;
@@ -20,8 +21,17 @@ namespace AppServiceMobileXamarin.Pages
             LoadProducts();
 
 
+            serviceListView.ItemTemplate = new DataTemplate(typeof(ServiceCell));
+            serviceListView.RowHeight = 70;
+
             quantityStepper.ValueChanged += QuantityStepper_ValueChanged;
             addButton.Clicked += AddButton_Clicked;
+            serviceListView.ItemSelected += ServiceListView_ItemSelected;
+        }
+
+        private async void ServiceListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            await Navigation.PushAsync(new EditServicePages((Service)e.SelectedItem));
         }
 
         protected override void OnAppearing()

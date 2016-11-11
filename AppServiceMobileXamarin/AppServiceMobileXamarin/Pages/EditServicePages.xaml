@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="AppServiceMobileXamarin.Pages.EditServicePages" Title="Edit Service.">
+
+    <ScrollView>
+        <StackLayout Spacing="10" Padding="15">
+            <Picker x:Name="productPicker"
+                    Title="Select Product"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+
+            </Picker>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Quantity: "
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center">
+
+                </Label>
+                <Entry x:Name="quantityEntry"
+                       HorizontalOptions="FillAndExpand"
+                       IsEnabled="False"
+                       Text="1"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center">
+
+                </Entry>
+                <Stepper x:Name="quantityStepper"
+                         Value="1"
+                         Increment="1"
+                         Minimum="1"
+                         Maximum="999999"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center">
+
+                </Stepper>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Date: "
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center">
+
+                </Label>
+                <DatePicker x:Name="dateDatePicker"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
+
+                </DatePicker>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="updateButton"
+                    Text="Update."
+                    BackgroundColor="Yellow"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+
+                </Button>
+                <Button x:Name="deleteButton"
+                    Text="Delete."
+                    BackgroundColor="Red"
+                    TextColor="Black"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+
+                </Button>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
