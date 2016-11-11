@@ -1,6 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppServiceMobileXamarin.Pages.QueriesPage" Title="Queries.">
-	<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="AppServiceMobileXamarin.Pages.QueriesPage" Title="Queries.">
+
+	<ScrollView>
+		<StackLayout Padding="15" Spacing="10">
+			<StackLayout Orientation="Horizontal">
+				<Label Text="Date: "
+					   HorizontalOptions="Start"
+					   VerticalOptions="Center">
+
+				</Label>
+				<DatePicker x:Name="dateDatePicker"
+							HorizontalOptions="FillAndExpand"
+							VerticalOptions="Center">
+
+				</DatePicker>
+			</StackLayout>
+			<ListView x:Name="serviceListView"></ListView>
+				<StackLayout Orientation="Horizontal">
+					<Label Text="Total: "
+						   HorizontalOptions="Start"
+						   VerticalOptions="Center">
+
+					</Label>
+					<Entry x:Name="totalEntry"
+						   IsEnabled="False"
+						   FontSize="20"
+						   FontAttributes="Bold"
+						   HorizontalTextAlignment="End"
+						   HorizontalOptions="FillAndExpand"
+						   VerticalOptions="Center">
+
+					</Entry>
+
+			</StackLayout>
+		</StackLayout>
+	</ScrollView>
+
 </ContentPage>
