@@ -24,6 +24,41 @@ namespace AppServiceMobileXamarin.Pages
             ShowProduct();
 
             quantityStepper.ValueChanged += QuantityStepper_ValueChanged;
+            updateButton.Clicked += UpdateButton_Clicked;
+            deleteButton.Clicked += DeleteButton_Clicked;
+        }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            var rta = await DisplayAlert("Confirm", "Are you sure to delete the record.", "Yes", "No");
+            if (!rta)
+            {
+                return;
+            }
+
+            using (var da = new DataAccess())
+            {
+                da.Delete(service);
+            }
+
+            await DisplayAlert("Message","The record was deleted.","Acept");
+            await Navigation.PopAsync();
+        }
+
+        private async void UpdateButton_Clicked(object sender, EventArgs e)
+        {
+            service.DateService = dateDatePicker.Date;
+            service.Price = Products[productPicker.SelectedIndex].Price;
+            service.ProductId = Products[productPicker.SelectedIndex].ProductId;
+            service.Quantity = quantityStepper.Value;
+
+            using (var da = new DataAccess())
+            {
+                da.Update(service);
+            }
+
+            await DisplayAlert("Message", "The record was updated.", "Acept");
+            await Navigation.PopAsync();
         }
 
         private void ShowProduct()
